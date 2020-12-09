@@ -1,0 +1,49 @@
+- name: Install Opencv On fresh install of rasbian
+  hosts: test # mediacenter test
+  remote_user: pi
+  become: true
+  become_user: root
+
+  tasks:
+  - name: Uninstall Wolfram-engine
+    apt: name=wolfram-engine state=absent
+
+  - name: Uninstall Libreoffice
+    apt: name=libreoffice* state=absent
+
+  - name: Clean up not needed packages
+    apt: autoclean=true
+
+  - name: Update all packages
+    apt: name="*" state=latest update_cache=true force_apt_get=true
+
+  - name: Install Opencv Dependencies
+    apt: name={{ item }} state=latest update_cache=true
+    loop: [build-essential, cmake, pkg-config, libjpeg-dev, libtiff5-dev, libjasper-dev, libpng-dev]
+
+  - name: Install More Opencv Dependencies
+    apt: name={{ item }} state=latest update_cache=true
+    loop: [libavcodec-dev, libavformat-dev, libswscale-dev, libv4l-dev, libxvidcore-dev, libx264-dev]
+
+  - name: Install even more opencv deps
+    apt: name={{ item }} state=latest update_cache=true
+    loop: [libfontconfig1-dev, libcairo2-dev, libgdk-pixbuf2.0-dev, libpango1.0-dev, libgtk2.0-dev, libgtk-3-dev]
+
+  - name: Install even more opencv deps
+    apt: name={{ item }} state=latest update_cache=true
+    loop: [libatlas-base-dev, gfortran, libhdf5-dev, libhdf5-serial-dev, libhdf5-103]
+
+  - name: Install even more opencv deps
+    apt: name={{ item }} state=latest update_cache=true
+    loop: [libqtgui4, libqtwebkit4, libqt4-test, python3-pyqt5, python3-dev]
+
+  - name: Create VENV install additional packages from pypi
+    script: /home/teresa/AnsibleJobs/opencv/create-venv.sh
+    args:
+        executable: sh
+    
+
+# to run this playbook
+# ansible-playbook MediaCenterRestart.yml --ask-pass
+
+
