@@ -4,7 +4,7 @@ from picamera import PiCamera
 import argparse
 import warnings
 import datetime
-import dropbox
+# import dropbox
 import imutils
 import json
 import time
