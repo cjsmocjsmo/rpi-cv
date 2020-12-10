@@ -31,7 +31,8 @@ class PiCamMail:
 
 
 
-    def teresa(self):
+    def teresa(self, pimage):
+        img_data = open(pimage, 'rb').read()
         email = "porthose.cjsmo.cjsmo@gmail.com"
         pas = "porthose01"
         sms_gateway = '9034366799@mymetropcs.com'
@@ -46,11 +47,15 @@ class PiCamMail:
         msg['Subject'] = "PiCam\n"
         body = "Motion Has Been Detected\n This is a test"
         msg.attach(MIMEText(body, 'plain'))
+        piimage = MIMEImage(img_data, maintype='image',
+                                 subtype=imghdr.what(None, img_data))
+        msg.attach(piimage)
         sms = msg.as_string()
         server.sendmail(email,sms_gateway,sms)
         server.quit()
 
-    def dylan(self):
+    def dylan(self, pimage):
+        img_data = open(pimage, 'rb').read()
         email = "porthose.cjsmo.cjsmo@gmail.com"
         pas = "porthose01"
         sms_gateway = '3606201169@vtext.com'
@@ -65,6 +70,9 @@ class PiCamMail:
         msg['Subject'] = "PiCam\n"
         body = "This is a test of the grandpa motion detection notification system\n"
         msg.attach(MIMEText(body, 'plain'))
+        piimage = MIMEImage(img_data, maintype='image',
+                                 subtype=imghdr.what(None, img_data))
+        msg.attach(piimage)
         sms = msg.as_string()
         server.sendmail(email,sms_gateway,sms)
         server.quit()
