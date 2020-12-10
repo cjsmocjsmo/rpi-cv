@@ -1,9 +1,12 @@
 import smtplib 
 from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
+import os
 
 class PiCamMail:
-    def charlie(self):
+    def charlie(self, pimage):
+        img_data = open(pimage, 'rb').read()
         email = "porthose.cjsmo.cjsmo@gmail.com"
         pas = "porthose01"
         sms_gateway = '9038201482@mymetropcs.com'
@@ -18,6 +21,8 @@ class PiCamMail:
         msg['Subject'] = "PiCam\n"
         body = "Motion Has Been Detected\n"
         msg.attach(MIMEText(body, 'plain'))
+        piimage = MIMEImage(img_data, name=os.path.basename)
+        msg.attach(piimage)
         sms = msg.as_string()
         server.sendmail(email,sms_gateway,sms)
         server.quit()
