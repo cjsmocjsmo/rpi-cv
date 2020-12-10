@@ -1,4 +1,5 @@
 from pyimagesearch.tempimage import TempImage
+from pyimagesearch.sendtext import PiCamMail
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 import argparse
@@ -100,6 +101,7 @@ for f in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True
 				if conf["use_dropbox"]:
 					# write the image to temporary file
 					t = TempImage()
+					pcm = PiCamMail()
 					print(t.path)
 					cv2.imwrite(t.path, frame)
 					# upload the image to Dropbox and cleanup the tempory image
@@ -107,6 +109,8 @@ for f in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True
 					path = "/{base_path}/{timestamp}.jpg".format(
 					    base_path=conf["dropbox_base_path"], timestamp=ts)
 					client.files_upload(open(t.path, "rb").read(), path)
+					pcm.charlie
+					pcm.teresa
 					# t.cleanup()
 				# update the last uploaded timestamp and reset the motion
 				# counter
