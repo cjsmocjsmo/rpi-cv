@@ -1,7 +1,7 @@
 {
 	"show_video": false,
 	"use_dropbox": true,
-	"dropbox_access_token": "sl.AnFx-ApyhIE7j1itnpoleIUNMmlopqXbz6BvGfiWCqLm29Fv9GWQzHj3D9nwWBqfLcOI9c1Lk-dIBzhn_N-hlZZEh8Tcf-bNop7k0q_G6ME5jQ6sBW28ej-mXIimcyp3vMqFuIQ",
+	"dropbox_access_token": "39kfB7OQf-QAAAAAAAAAAQERGIXKIiAfZYKTEmY9NARknALiWGRUZ25kuB0TluXg",
 	"dropbox_base_path": "ppcam",
 	"min_upload_seconds": 3.0,
 	"min_motion_frames": 8,
