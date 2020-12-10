@@ -105,6 +105,7 @@ for f in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True
 					print(t.path)
 					cv2.imwrite(t.path, frame)
 					pcm.charlie(t.path)
+					pcm.amaya(t.path)
 					# pcm.teresa(t.path)
 					# pcm.dylan(t.path)
 					# pcm.hill(t.path)
