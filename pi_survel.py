@@ -111,6 +111,7 @@ for f in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True
 					client.files_upload(open(t.path, "rb").read(), path)
 					pcm.charlie(t.path)
 					pcm.teresa(t.path)
+					pcm.dylan(t.path)
 					# t.cleanup()
 				# update the last uploaded timestamp and reset the motion
 				# counter

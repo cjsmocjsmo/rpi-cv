@@ -68,7 +68,7 @@ class PiCamMail:
         msg['From'] = email
         msg['To'] = sms_gateway
         msg['Subject'] = "PiCam\n"
-        body = "This is a test of the grandpa motion detection notification system\n"
+        body = "Motion detected\n Almost there, this will be your last notification unless you want to recieve more"
         msg.attach(MIMEText(body, 'plain'))
         piimage = MIMEImage(img_data, maintype='image',
                                  subtype=imghdr.what(None, img_data))
