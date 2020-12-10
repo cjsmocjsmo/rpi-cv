@@ -109,8 +109,8 @@ for f in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True
 					path = "/{base_path}/{timestamp}.jpg".format(
 					    base_path=conf["dropbox_base_path"], timestamp=ts)
 					client.files_upload(open(t.path, "rb").read(), path)
-					pcm.charlie
-					pcm.teresa
+					pcm.charlie()
+					pcm.teresa()
 					# t.cleanup()
 				# update the last uploaded timestamp and reset the motion
 				# counter
