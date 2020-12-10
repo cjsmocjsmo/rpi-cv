@@ -105,14 +105,16 @@ for f in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True
 					print(t.path)
 					cv2.imwrite(t.path, frame)
 					pcm.charlie(t.path)
+					pcm.teresa(t.path)
+					pcm.dylan(t.path)
+					pcm.hill(t.path)
 					# upload the image to Dropbox and cleanup the tempory image
 					print("[UPLOAD] {}".format(ts))
 					path = "/{base_path}/{timestamp}.jpg".format(
 					    base_path=conf["dropbox_base_path"], timestamp=ts)
 					client.files_upload(open(t.path, "rb").read(), path)
 					
-					# pcm.teresa(t.path)
-					# pcm.dylan(t.path)
+
 					t.cleanup()
 				# update the last uploaded timestamp and reset the motion
 				# counter

@@ -68,7 +68,30 @@ class PiCamMail:
         msg['From'] = email
         msg['To'] = sms_gateway
         msg['Subject'] = "PiCam\n"
-        body = "Motion detected\n Almost there, this will be your last notification unless you want to recieve more"
+        body = "Motion detected\n "
+        msg.attach(MIMEText(body, 'plain'))
+        piimage = MIMEImage(img_data, maintype='image',
+                                 subtype=imghdr.what(None, img_data))
+        msg.attach(piimage)
+        sms = msg.as_string()
+        server.sendmail(email,sms_gateway,sms)
+        server.quit()
+
+    def hill(self, pimage):
+        img_data = open(pimage, 'rb').read()
+        email = "porthose.cjsmo.cjsmo@gmail.com"
+        pas = "porthose01"
+        sms_gateway = '3606208524@vtext.com'
+        smtp = "smtp.gmail.com" 
+        port = 587
+        server = smtplib.SMTP(smtp, port)
+        server.starttls()
+        server.login(email, pas)
+        msg = MIMEMultipart()
+        msg['From'] = email
+        msg['To'] = sms_gateway
+        msg['Subject'] = "PiCam\n"
+        body = "Motion detected\n "
         msg.attach(MIMEText(body, 'plain'))
         piimage = MIMEImage(img_data, maintype='image',
                                  subtype=imghdr.what(None, img_data))
