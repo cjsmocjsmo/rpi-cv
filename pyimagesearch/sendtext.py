@@ -104,7 +104,7 @@ class PiCamMail:
         img_data = open(pimage, 'rb').read()
         email = "porthose.cjsmo.cjsmo@gmail.com"
         pas = "porthose01"
-        sms_gateway = '4254924983@vtext.com'
+        sms_gateway = '4254924983@txt.att.net'
         smtp = "smtp.gmail.com" 
         port = 587
         server = smtplib.SMTP(smtp, port)
