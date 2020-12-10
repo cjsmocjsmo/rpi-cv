@@ -100,6 +100,7 @@ for f in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True
 				if conf["use_dropbox"]:
 					# write the image to temporary file
 					t = TempImage()
+					print(t.path)
 					cv2.imwrite(t.path, frame)
 					# upload the image to Dropbox and cleanup the tempory image
 					print("[UPLOAD] {}".format(ts))
